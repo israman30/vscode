@@ -45,6 +45,7 @@
 	width: 18px;
 	height: 21px;
 	padding-left: 2px;
+	padding: 4px;
 }
 
 .monaco-workbench .monaco-action-bar .start-debug-action-item .configuration .monaco-select-box {
@@ -148,7 +149,7 @@
 }
 
 .debug-pane .monaco-list-row .monaco-action-bar .action-label {
-	padding: 2px;
+	padding: 4px;
 }
 
 .debug-pane .session .codicon {
