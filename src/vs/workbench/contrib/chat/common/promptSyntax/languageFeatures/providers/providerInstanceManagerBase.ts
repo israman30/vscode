@@ -15,6 +15,7 @@ import { IEditorService } from '../../../../../../services/editor/common/editorS
 import { IDiffEditor, IEditor, IEditorModel } from '../../../../../../../editor/common/editorCommon.js';
 import { IInstantiationService } from '../../../../../../../platform/instantiation/common/instantiation.js';
 import { IConfigurationService } from '../../../../../../../platform/configuration/common/configuration.js';
+import { assert } from '../../../../../../../base/common/assert.js';
 
 /**
  * Type for a text editor that is used for reusable prompt files.
@@ -49,6 +50,11 @@ export abstract class ProviderInstanceManagerBase<TInstance extends ProviderInst
 		// cache of managed instances
 		this.instances = this._register(
 			new ObjectCache((model: ITextModel) => {
+				assert(
+					model.isDisposed() === false,
+					'Text model must not be disposed.',
+				);
+
 				// sanity check - the new TS/JS discrepancies regarding fields initialization
 				// logic mean that this can be `undefined` during runtime while defined in TS
 				assertDefined(
